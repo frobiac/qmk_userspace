@@ -1,6 +1,8 @@
 // Copyright 2023 @frobiac
 // SPDX-License-Identifier: MIT
 
+// @TODO : Figure out how to use with json compile, enum instead of define, ...
+
 #pragma once
 
 // Note this kludge is required to be able to
