@@ -1,0 +1,13 @@
+{
+    "keyboard": "ferris/sweep",
+    "keymap": "frobiac",
+    "layout": "LAYOUT_sweep_3x5_2_wrapper",
+    "layers": [
+        [ "_FROBIAC_L" ],
+        [ "_QWERTZ_L" ],
+        [ "_SYMBOLS_L" ],
+        [ "_NAVNUM_L " ],
+        [ "_FUNC_L" ],
+        [ "_MOUSE_L" ],
+    ]
+}
