@@ -80,4 +80,12 @@ void keyboard_pre_init_trackpoint(void) {
 #    endif
 }
 
+// Check if this would be a could place to fix uncontrollable movement after suspend,
+// should it occur again.
+__attribute__((weak)) void suspend_power_down_user(void) {}
+
+__attribute__((weak)) void suspend_wakeup_init_user(void) {
+    // ps2_mouse_init();
+}
+
 #endif // PS2_MOUSE_ENABLE
