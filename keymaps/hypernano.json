@@ -4,10 +4,10 @@
     "layout": "LAYOUT_hypernano_4x12_wrapper",
     "layers": [
         [ "_FROBIAC_L", "KC_NO", "KC_NO", "KC_NO", "KC_NO" ],
-        [ "_QWERTZ_L" , "KC_NO", "KC_NO", "KC_NO", "KC_NO" ],
-        [ "_SYMBOLS_L", "KC_NO", "KC_NO", "KC_NO", "KC_NO" ],
-        [ "_NAVNUM_L" , "KC_NO", "KC_NO", "KC_NO", "KC_NO" ],
-        [ "_FUNC_L"   , "KC_NO", "KC_NO", "KC_NO", "KC_NO" ],
-        [ "_MOUSE_L"  , "KC_NO", "KC_NO", "KC_NO", "KC_NO" ]
+        [ "C_44(_QWERTZ_L)" ],
+        [ "C_44(_SYMBOLS_L)" ],
+        [ "C_44(_NAVNUM_L)" ],
+        [ "C_44(_FUNC_L)" ],
+        [ "C_44(_MOUSE_L)" ]
     ]
 }
