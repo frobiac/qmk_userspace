@@ -20,7 +20,6 @@ __attribute__((weak)) void matrix_scan_keymap(void) {}
 
 void matrix_scan_user(void) {
 #ifdef CUSTOM_AUTO_MBTN_ENABLE
-    extern void matrix_scan_autombtn(void);
     matrix_scan_autombtn();
 #endif
     matrix_scan_keymap();
@@ -28,7 +27,6 @@ void matrix_scan_user(void) {
 
 void ps2_mouse_moved_user(report_mouse_t *mouse_report) {
 #ifdef CUSTOM_AUTO_MBTN_ENABLE
-    extern void ps2_mouse_moved_autombtn(report_mouse_t * mouse_report);
     ps2_mouse_moved_autombtn(mouse_report);
 #endif
 }
@@ -37,7 +35,6 @@ __attribute__((weak)) void keyboard_pre_init_keymap(void) {}
 
 void keyboard_pre_init_user(void) {
 #ifdef PS2_MOUSE_ENABLE
-    extern void keyboard_pre_init_trackpoint(void);
     keyboard_pre_init_trackpoint();
 #endif
     keyboard_pre_init_keymap();
