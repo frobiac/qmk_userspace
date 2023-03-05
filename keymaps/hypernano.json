@@ -1,0 +1,13 @@
+{
+    "keyboard": "frobiac/hypernano",
+    "keymap": "frobiac",
+    "layout": "LAYOUT_hypernano_4x12_wrapper",
+    "layers": [
+        [ "_FROBIAC_L", "KC_NO", "KC_NO", "KC_NO", "KC_NO" ],
+        [ "_QWERTZ_L" , "KC_NO", "KC_NO", "KC_NO", "KC_NO" ],
+        [ "_SYMBOLS_L", "KC_NO", "KC_NO", "KC_NO", "KC_NO" ],
+        [ "_NAVNUM_L" , "KC_NO", "KC_NO", "KC_NO", "KC_NO" ],
+        [ "_FUNC_L"   , "KC_NO", "KC_NO", "KC_NO", "KC_NO" ],
+        [ "_MOUSE_L"  , "KC_NO", "KC_NO", "KC_NO", "KC_NO" ]
+    ]
+}

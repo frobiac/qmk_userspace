@@ -21,7 +21,7 @@
  *
  *  Hook up in keyboard_init() just before ps2_mouse_init(), e.g. keyboard_pre_init_user()
  */
-__attribute__((weak)) void tp_reset() {
+void tp_reset(void) {
     setPinOutput(PS2_RESET_PIN);
     writePinHigh(PS2_RESET_PIN);
     wait_us(150); // PS2_DELAY
@@ -42,7 +42,7 @@ __attribute__((weak)) void tp_reset() {
 #    define TP_DEFCONFIG 0x2C  // O:|PTS|RES|2BT|~X |~Y |~Z |X-Y|FHT]:7
 
 // convenience function to set trackpoint registers
-__attribute__((weak)) void tp_ram_write(uint8_t addr, uint8_t val) {
+void tp_ram_write(uint8_t addr, uint8_t val) {
     // @TODO prefer PS2_MOUSE_SEND()?
     ps2_host_send(TP_COMMAND);
     ps2_host_send(TP_WRITE_MEM);
@@ -59,7 +59,7 @@ __attribute__((weak)) void tp_ram_write(uint8_t addr, uint8_t val) {
 //       SE=160 SP=208 : better
 // Original Hypernano settings
 //       SE=224 SP=224 TH=16
-__attribute__((weak)) void ps2_mouse_init_user(void) {
+void ps2_mouse_init_trackpoint(void) {
     // sensitivity, speed, ...
     tp_ram_write(TP_SENS, 0xA0);
     tp_ram_write(TP_SPEED, 0xD0);
@@ -73,4 +73,11 @@ __attribute__((weak)) void ps2_mouse_init_user(void) {
     // tp_ram_write(0x41, 0xff); // external pointing?
     // tp_ram_write(0x42, 0xff);
 }
-#endif
+
+void keyboard_pre_init_trackpoint(void) {
+#    if defined(PS2_RESET_PIN)
+    tp_reset();
+#    endif
+}
+
+#endif // PS2_MOUSE_ENABLE

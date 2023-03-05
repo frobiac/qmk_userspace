@@ -3,9 +3,9 @@
 
 #pragma once
 
-#if defined(PS2_MOUSE_ENABLE) && defined(PS2_RESET_PIN)
+#if defined(PS2_MOUSE_ENABLE)
 
-// Also copied in individual keyboards by request on initial PR
-void tp_reset(void);
+void ps2_mouse_init_trackpoint(void);
+void keyboard_pre_init_trackpoint(void);
 
 #endif

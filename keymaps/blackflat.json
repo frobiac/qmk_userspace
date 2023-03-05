@@ -1,0 +1,17 @@
+{
+    "author":  "frobiac",
+    "documentation": "Layout wrapper based keymap",
+    "keyboard": "frobiac/blackflat",
+    "keymap": "frobiac",
+    "layout": "LAYOUT_blackflat_4x12_wrapper",
+    "layers": [
+        [ "_FROBIAC_L"],
+        [ "_QWERTZ_L" ],
+        [ "_SYMBOLS_L" ],
+        [ "_NAVNUM_L" ],
+        [ "_FUNC_L" ],
+        [ "_MOUSE_L" ]
+    ],
+    "notes": "Does not need hack for keymap_german.h include when in '#ifndef __ASSEMBLER__'guard",
+    "version": 1
+}

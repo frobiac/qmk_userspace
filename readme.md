@@ -3,7 +3,10 @@
 This directory contains common layout components and features for my various keyboards.
 
 Its structure is inspired by two approaches
-* via Configurator and JSON, see @paperfilter
+* via Configurator and JSON, see [filterpaper notes](https://filterpaper.github.io/qmk/userspace.html)
+    - hardware features in config.h and rules.mk
+    - custom code in frobiac.c instead of keymap.c
+    -
 * via C code, see @curry
 
 The custom boards have been supported by my original firmware so far.

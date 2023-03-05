@@ -3,4 +3,10 @@
 
 #pragma once
 
-#include "layout.h"
+// cannot be included due to preprocessor conflicts? "quantum.h" instead?
+#include QMK_KEYBOARD_H
+
+// @TODO Only needed to avoid local extern definitions in code?
+// #include "trackpoint.h"
+// #include "process_records.h"
+// #include "automousebutton.h"

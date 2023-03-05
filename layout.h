@@ -3,8 +3,22 @@
 
 #pragma once
 
-#include "keymap_german.h"
+// Note this kludge is required to be able to
+// compile *both* regular keymaps in the keyboards' directory
+// *and* JSON configs here in userspace!
+// Still fails when CONSOLE_ENABLE is not set?
+#ifndef __ASSEMBLER__
+#    include "keymap_german.h"
 
+enum layers {
+    _FROBIAC,
+    _QWERTZ,
+    _SYMBOLS,
+    _NAVNUM,
+    _FUNC,
+    _MOUSE,
+};
+#endif
 // Contains a layout based on 'Aus der Neo-Welt', 'NordTast' and 'Neo' extra layers
 
 // Support
@@ -32,14 +46,9 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #define LAYOUT_sweep_3x5_2_wrapper(...)     LAYOUT_sweep_3x5_2(__VA_ARGS__)
 #define LAYOUT_crowboard_3x5_3_wrapper(...) LAYOUT_crowboard_3x5_3(__VA_ARGS__)
 
-enum layers {
-    _FROBIAC,
-    _QWERTZ,
-    _SYMBOLS,
-    _NAVNUM,
-    _FUNC,
-    _MOUSE
-};
+
+
+#define IS_COMMAND() (((get_mods() | get_oneshot_mods()) & MOD_MASK_SHIFT) == MOD_MASK_SHIFT)
 
 // Cosmetic only: To neatly fit into 7 chars
 #define _L_MOUS MO(_MOUSE)
@@ -63,7 +72,7 @@ enum layers {
 
 #define _________________FROBIAC_R1________________         KC_P,    KC_C,    KC_L,    KC_M,    KC_F
 #define _________________FROBIAC_R2________________         KC_D,    KC_T,    KC_R,    KC_N,    KC_S
-#define _________________FROBIAC_R3________________         KC_B,    KC_G,    KC_W,    KC_V,    DE_Z
+#define _________________FROBIAC_R3________________         KC_B,    KC_G,    KC_W,    KC_V,    RSFT_T(DE_Z)
 
 #define _________________QWERTZ__L1________________         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T
 #define _________________QWERTZ__L2________________         KC_A,    KC_S,    KC_D,    KC_F,    KC_G
@@ -71,7 +80,7 @@ enum layers {
 
 #define _________________QWERTZ__R1________________         DE_Z,    KC_U,    KC_I,    KC_O,    KC_P
 #define _________________QWERTZ__R2________________         KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN
-#define _________________QWERTZ__R3________________         KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLASH
+#define _________________QWERTZ__R3________________         KC_N,    KC_M,    KC_COMM, KC_DOT,  RSFT_T(KC_SLASH)
 
 
 #define _________________SYMBOLS_L1________________         DE_AT,   DE_DEG,  DE_LBRC, DE_RBRC, DE_HASH
@@ -93,8 +102,8 @@ enum layers {
 
 
 #define _________________FUNC_FX_L1________________         ____RECORDING_x3_________, DF(_QWERTZ), DF(_FROBIAC)
-#define _________________FUNC_FX_L2________________         ____DYNAMIC_MACRO_1_x3___, XXXXXXX, XXXXXXX
-#define _________________FUNC_FX_L3________________         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+#define _________________FUNC_FX_L2________________         ____DYNAMIC_MACRO_1_x3___, XXXXXXX, QK_REBOOT
+#define _________________FUNC_FX_L3________________         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOTLOADER
 
 #define _________________FUNC_FX_R1________________         XXXXXXX, KC_F7,   KC_F8,   KC_F9,   KC_F10
 #define _________________FUNC_FX_R2________________         XXXXXXX, KC_F4,   KC_F5,   KC_F6,   KC_F11
@@ -108,7 +117,7 @@ enum layers {
 // @TODO MOUSE Scroll lock on other than BTN3 (default)?
 #define _________________MOUSE___R1________________         KC_ACL0, XXXXXXX, KC_BTN3, XXXXXXX, KC_BTN5
 #define _________________MOUSE___R2________________         KC_ACL1, XXXXXXX, KC_BTN1, KC_BTN2, KC_BTN4
-#define _________________MOUSE___R3________________         KC_ACL2, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT
+#define _________________MOUSE___R3________________         KC_ACL2, XXXXXXX, XXXXXXX, QK_REBOOT, QK_BOOT
 
 
 #if defined(DYNAMIC_MACRO_ENABLE)
@@ -174,6 +183,7 @@ enum layers {
     HyperNano custom board: 4 keys missing in matrix where trackpoint can be installed.
     Could also just use info.json, but this way reuse of convenience defines
     and default layers is easier to change for multiple boards
+    8x6 matrix wired, but layout similar to a 4x12 board
 
     ┌─────┬───┬───┬───┬───┐───────┌───┬───┬───┬───┬─────┐
     │  00 │01 │02 │03 │04 │       │40 │41 │42 │43 │44   │
