@@ -8,7 +8,15 @@
 // *and* JSON configs here in userspace!
 // Still fails when CONSOLE_ENABLE is not set?
 #ifndef __ASSEMBLER__
-#    include "keymap_german.h"
+// Using default german keymap include does *NOT* work because it includes "keymap.h".
+// Even with the above __ASSEMBLER__ guard, building '-kb frobiac/blackbowl -km frobiac' fails here with
+//
+// Compiling: platforms/avr/drivers/i2c_master.c
+// platforms/avr/drivers/i2c_master.c:40: error: "MAX" redefined [-Werror]
+// lib/lufa/LUFA/Drivers/USB/../../Common/Common.h:166: note: this is the location of the previous definition
+//
+// #    include "keymap_german.h"
+#    include "keymap_german_no_include.h"
 
 enum layers {
     _FROBIAC,
