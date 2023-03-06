@@ -126,7 +126,7 @@ bool process_record_automousebutton(uint16_t keycode, keyrecord_t *record) {
 #ifdef AMB_LEAVE_ON_OTHER_KEYS
     // Optional keys used in conjuction with mouse: Modifiers: Shift/Control, maybe.
     // Note that this does *not* cover modtaps or other non-standard basic keys.
-    if (IS_BASIC_KEYCODE(keycode)) {
+    if (IS_KEY(keycode)) {
         auto_l_timer = 0;
         return true;
     }
