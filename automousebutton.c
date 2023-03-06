@@ -19,6 +19,15 @@
 
 #include "frobiac.h" // include userspace for layouts
 #include "timer.h"
+#include "keycode.h" // IS_KEY()
+
+// needed for VIAL which only supports IS_KEY
+#if !defined(IS_BASIC_KEYCODE)
+#    ifndef IS_KEY
+#        error IS_KEY is not defined, needed for IS_BASIC_KEYCODE redefinition
+#    endif
+#    define IS_BASIC_KEYCODE IS_KEY
+#endif
 
 /// Control duration of mouse layer activation after no more mouse envents are received.
 /// Reset to 0 to terminate further handling early.
