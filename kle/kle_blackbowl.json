@@ -1,0 +1,156 @@
+[
+  {
+    "name": "BlackBowl",
+    "author": "frobiac",
+    "notes": "- Trackpoint on right digit in PCDT-cluster\n- Two additional buttons to complete 3-Key-Columns not shown here",
+    "plate": false
+  },
+  [
+    {
+      "a": 7,
+      "f": 8
+    },
+    "",
+    {
+      "x": 1
+    },
+    "Q",
+    ".",
+    "J",
+    {
+      "x": 1
+    },
+    "P",
+    "C",
+    "L",
+    {
+      "x": 1
+    },
+    ""
+  ],
+  [
+    {
+      "y": -0.5,
+      "x": 1
+    },
+    "U",
+    {
+      "x": 4.5,
+      "t": "#ff0000",
+      "a": 5,
+      "f": 3,
+      "fa": [
+        9
+      ],
+      "d": true
+    },
+    "<i class='fa fa-circle'></i>\nTP",
+    {
+      "x": 1.5,
+      "t": "#000000",
+      "a": 7,
+      "f": 8
+    },
+    "M"
+  ],
+  [
+    {
+      "y": -0.5
+    },
+    "K",
+    {
+      "x": 1
+    },
+    "E",
+    "A",
+    "O",
+    {
+      "x": 1
+    },
+    "D",
+    "T",
+    "R",
+    {
+      "x": 1
+    },
+    "F"
+  ],
+  [
+    {
+      "y": -0.5,
+      "x": 1
+    },
+    "I",
+    {
+      "x": 7
+    },
+    "N"
+  ],
+  [
+    {
+      "y": -0.5
+    },
+    "H",
+    {
+      "x": 1
+    },
+    "-",
+    ",",
+    {
+      "a": 5
+    },
+    "\n/",
+    {
+      "x": 1,
+      "a": 7
+    },
+    "B",
+    "G",
+    "W",
+    {
+      "x": 1
+    },
+    "S"
+  ],
+  [
+    {
+      "y": -0.5,
+      "x": 1
+    },
+    "Y",
+    {
+      "x": 7
+    },
+    "V"
+  ],
+  [
+    {
+      "y": -0.5
+    },
+    "X",
+    {
+      "x": 1
+    },
+    "",
+    {
+      "a": 5
+    },
+    "\n<i class='kb kb-Tab-1'></i>",
+    {
+      "a": 7
+    },
+    "spc",
+    {
+      "x": 1,
+      "a": 5
+    },
+    "\n<i class='mss mss-Unicode-Escape-3'></i>",
+    "\n<i class='kb kb-Unicode-BackSpace-DeleteLeft-Big'></i>",
+    "\n<i class='kb kb-Return-2'></i>",
+    {
+      "x": 1,
+      "a": 7
+    },
+    "Z"
+  ]
+]
