@@ -1,12 +1,16 @@
 #!/bin/sh
 
-# users/frobiac should be a separate repo/submodule
-USERDIR=$(git rev-parse --show-toplevel)
-QMKROOT=$USERDIR/../..
+set -euo pipefail
+
+# This script under users/frobiac should be a separate repo/submodule
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+SUPER_DIR=$( cd "$SCRIPT_DIR" && git rev-parse --show-superproject-working-tree )
+
+cd "$SUPER_DIR"
 
 # Crude test to see if we are called from within QMK or VIAL repo
 is_vial_repo() {
-    test -f "$QMKROOT/quantum/vial.h"
+    test -f "$SUPER_DIR/quantum/vial.h"
 }
 
 qmk_c() {
@@ -20,9 +24,17 @@ build_json() {
     done
 }
 
-build_keymaps() {
+
+build_keymap() {
+    km=$1
     for kb in blackflat blackbowl hypernano redtilt; do
-        cd $QMKROOT/keyboards/frobiac/$kb/keymaps/
+        qmk_c -kb frobiac/$kb -km $km
+    done
+}
+
+build_all_keymaps() {
+    for kb in blackflat blackbowl hypernano redtilt; do
+        cd $SUPER_DIR/keyboards/frobiac/$kb/keymaps/
         for kmdir in *; do
             test -d $kmdir || continue
             km=$(basename $kmdir);
@@ -34,12 +46,14 @@ build_keymaps() {
 }
 
 # Build all boards with all keymaps in `keyboards/frobiac`
-build_keymaps
 
 # currently fails in VIAL?!
 if is_vial_repo; then
     echo "Detected VIAL repo ?!"
-    echo "Not trying to compile JSON keymaps from userspace"
+    echo "Not trying to compile JSON keymaps from userspace, nor default keymaps"
+    # @TODO blackbowl -km default does not build in VIAL
+    build_keymap vial
 else
     build_json
+    build_all_keymaps
 fi
