@@ -15,24 +15,29 @@ endif
 SRC += frobiac.c \
 	   process_records.c \
 
-# Trackpoint boards
+# Trackpoint boards:
+# Default is to enable PS2_MOUSE_ENABLE here, but may be set to 'no' in keymaps' rules.mk to override
+# Support for older PS2 mode selection (as in VIAL) is also done here
 ifeq ($(strip $(KEYBOARD)), $(filter $(KEYBOARD), frobiac/hypernano frobiac/blackflat frobiac/blackbowl frobiac/redtilt))
 	# Only teensies
 	BOOTLOADER = halfkay
 
-	PS2_MOUSE_ENABLE = yes
-	PS2_ENABLE = yes
-	ifeq ($(strip $(KEYBOARD)), $(filter $(KEYBOARD), frobiac/blackbowl))
-		PS2_DRIVER = usart
-	else
-		PS2_DRIVER = busywait
-	endif
+	PS2_MOUSE_ENABLE ?= yes
+	ifeq ($(strip $(PS2_MOUSE_ENABLE)), yes)
+		# PS2_ENABLE = yes # implicitely enabeled by PS2_MOUSE_ENABLE
+		ifeq ($(strip $(KEYBOARD)), $(filter $(KEYBOARD), frobiac/blackbowl))
+			PS2_DRIVER = usart
+			PS2_USE_USART = yes # compatibility with older VIAL QMK
+		else
+			PS2_DRIVER = busywait
+			PS2_USE_BUSYWAIT = yes
+		endif
 
-	SRC += trackpoint.c
-	CUSTOM_AUTO_MBTN_ENABLE = yes
+		SRC += trackpoint.c
+		CUSTOM_AUTO_MBTN_ENABLE = yes
+	endif
 endif
 
-# @TODO Should we check PS2 is enabled?
 # @TODO How about other possible pointing devices?
 CUSTOM_AUTO_MBTN_ENABLE ?= no
 ifeq ($(strip $(CUSTOM_AUTO_MBTN_ENABLE)), yes)
