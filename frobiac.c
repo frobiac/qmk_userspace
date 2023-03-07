@@ -26,12 +26,14 @@ void matrix_scan_user(void) {
     matrix_scan_keymap();
 }
 
+#ifdef PS2_MOUSE_ENABLE
 void ps2_mouse_moved_user(report_mouse_t *mouse_report) {
-#ifdef CUSTOM_AUTO_MBTN_ENABLE
+#    ifdef CUSTOM_AUTO_MBTN_ENABLE
     extern void ps2_mouse_moved_autombtn(report_mouse_t * mouse_report);
     ps2_mouse_moved_autombtn(mouse_report);
-#endif
+#    endif
 }
+#endif
 
 __attribute__((weak)) void keyboard_pre_init_keymap(void) {}
 
