@@ -14,6 +14,11 @@ Below 'keyboards/frobiac' there will be their port to QMK.
 In order to make my personal layout usable with other community driven designs
 this userspace contains shared code and defines.
 
+@TODO document VIAL integration of changes to
+- QMK firmware repo `keyboards/frobiac`
+- QMK userspace repo `users/frobiac`
+- VIAL changes to both
+
 ## Layout
 
 Base layout is based on [Aus der Neo-Welt](http://www.adnw.de/index.php?n=Main.HomePage)
@@ -23,7 +28,7 @@ Extra layers based on [Neo](https://www.neo-layout.org)
 ## Features
 [Original firmware](https://github.com/frobiac/adnw)
 
-@TODO trackpoint mouse layer activation
+@TODO LEDs
 @TODO XOR
 @TODO passhash
 
