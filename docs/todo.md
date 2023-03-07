@@ -1,5 +1,6 @@
 # General
 [ ] Check if VIAL can also be compiled via JSON instead of keyboard/frobiac/*/keymaps/vial
+[ ] Add install instructions from scratch rafaelromao/keyboards and gerryhernandez/gkey
 
 # QMK features and settings
 [ ] LED where available
@@ -19,3 +20,4 @@
 
 # To figure out
 How to check for modifiers, layer switches, ... see keycodes.h and get_modsXXX() usage
+
