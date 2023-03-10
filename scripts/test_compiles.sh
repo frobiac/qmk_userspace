@@ -5,6 +5,7 @@ set -euo pipefail
 # This script under users/frobiac should be a separate repo/submodule
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 SUPER_DIR=$( cd "$SCRIPT_DIR" && git rev-parse --show-superproject-working-tree )
+USER_DIR=$( cd "$SCRIPT_DIR" && git rev-parse --show-toplevel )
 
 cd "$SUPER_DIR"
 
@@ -18,7 +19,7 @@ qmk_c() {
 }
 
 build_json() {
-    cd $USERDIR/keymaps
+    cd $USER_DIR/keymaps
     for j in *.json; do
         qmk_c -c $j
     done
