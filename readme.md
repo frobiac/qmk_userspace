@@ -16,7 +16,12 @@ this userspace contains shared code and defines.
 
 ## Layout
 
-Base layout is based on [Aus der Neo-Welt](http://www.adnw.de/index.php?n=Main.HomePage)
+Base layout is based on [Aus der Neo-Welt](http://www.adnw.de/index.php?n=Main.HomePage),
+and is variant [bu-teck @TODO link]() for ortholinear boards with thumb keys.
+Some minor changes were performed, most notably removing the umlauts from
+the main layer to get the number of keys down to 30 for my preferred 3x5_3 split boards.
+Also switched some letters, J/K/Q/G ??? @TODO.
+
 Extra layers based on [Neo](https://www.neo-layout.org)
 
 
