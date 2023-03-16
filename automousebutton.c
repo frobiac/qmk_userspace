@@ -16,6 +16,9 @@
 /// but is usually not necessary nor recommended
 ///
 /// @TODO: Configure keys? Depend on layout for now!
+/// @TODO: VIAL: keeping button pressed for selecting text, for example does *NOT* work
+///        but does in QMK (and also with identical VIAL keymap there).
+///        Workaround: Press mouse-layer switch
 
 #include "frobiac.h" // include userspace for layouts
 #include "timer.h"
