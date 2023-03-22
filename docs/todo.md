@@ -22,7 +22,7 @@
 [X] Convert all to JSON
 
 # VIAL
-[ ] compile time switch between QMK and VIAL in userspace (e.g XorShift functions not available)
+[#] VIAL_ENABLE to check QMK and VIAL in userspace (e.g XorShift functions not available)
 
 # Layout
 [ ] All layers reachable (Func-Layer?)

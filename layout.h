@@ -27,7 +27,7 @@ enum layers {
 
 #    include "quantum_keycodes.h"
 enum custom_keycodes {
-    REC_START = SAFE_RANGE,
+    REC_START = SAFE_RANGE, // same as default QK_USER in QMK, not available in VIAL
     REC_STOP,
     REC_REPLAY,
     XOR_INIT,
