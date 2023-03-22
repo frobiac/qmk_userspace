@@ -24,6 +24,16 @@ enum layers {
     _FUNC,
     _MOUSE,
 };
+
+#    include "quantum_keycodes.h"
+enum custom_keycodes {
+    REC_START = SAFE_RANGE,
+    REC_STOP,
+    REC_REPLAY,
+    XOR_INIT,
+    XOR_PLAY,
+};
+
 #endif
 // Contains a layout based on 'Aus der Neo-Welt', 'NordTast' and 'Neo' extra layers
 

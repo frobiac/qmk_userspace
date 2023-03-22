@@ -21,6 +21,9 @@
 [X] Store userspace in personal github
 [X] Convert all to JSON
 
+# VIAL
+[ ] compile time switch between QMK and VIAL in userspace (e.g XorShift functions not available)
+
 # Layout
 [ ] All layers reachable (Func-Layer?)
 [X] Common locations for Reboot/Macro/DefaultLayer/CommandMode
@@ -28,3 +31,14 @@
 # To figure out
 How to check for modifiers, layer switches, ... see keycodes.h and get_modsXXX() usage
 
+
+# Board specific
+
+## RedTilt
+
+[X] Trackpoint in VIAL: OK
+
+Working in AdNW v0.9.7-353-g1c31c1f-D-2021-01-17
+    EE[15] 0005: 0C 0000 Mouse=1-1 AL=0
+    TP: Sens:  28/128 SP= 97 TH=249
+    PTS=0 X=1 Y=1 (18)
