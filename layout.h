@@ -74,6 +74,7 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 // @TODO: Use defines for any key-combination that is checked in process_record_.. routines to
 //        avoid issues on change.
 #define _MOUS_X LT(_MOUSE, KC_X)
+#define _MOUS_Y LT(_MOUSE, KC_Y)
 #define _NAVESC LT(_NAVNUM, KC_ESC)
 #define _SYMENT LT(_SYMBOLS, KC_ENT)
 
@@ -93,7 +94,7 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 
 #define _________________QWERTZ__L1________________         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T
 #define _________________QWERTZ__L2________________         KC_A,    KC_S,    KC_D,    KC_F,    KC_G
-#define _________________QWERTZ__L3________________         DE_Y,    KC_X,    KC_C,    KC_V,    KC_B
+#define _________________QWERTZ__L3________________         _MOUS_Y, KC_X,    KC_C,    KC_V,    KC_B
 
 #define _________________QWERTZ__R1________________         DE_Z,    KC_U,    KC_I,    KC_O,    KC_P
 #define _________________QWERTZ__R2________________         KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN
@@ -160,13 +161,13 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
     _________________FROBIAC_L1________________, _________________FROBIAC_R1________________, \
     _________________FROBIAC_L2________________, _________________FROBIAC_R2________________, \
     _________________FROBIAC_L3________________, _________________FROBIAC_R3________________, \
-    _L_MOUS, XXXXXXX, _______THUMBS_L_x3_______, _______THUMBS_R_x3_______, KC_RSFT, _L_FUNC
+    KC_RALT, XXXXXXX, _______THUMBS_L_x3_______, _______THUMBS_R_x3_______, KC_RSFT, _L_FUNC
 
 #define _QWERTZ_L \
     _________________QWERTZ__L1________________, _________________QWERTZ__R1________________, \
     _________________QWERTZ__L2________________, _________________QWERTZ__R2________________, \
     _________________QWERTZ__L3________________, _________________QWERTZ__R3________________, \
-    _L_MOUS, XXXXXXX, _______THUMBS_L_x3_______, _______THUMBS_R_x3_______, KC_RSFT, _L_FUNC
+    KC_RALT, XXXXXXX, _______THUMBS_L_x3_______, _______THUMBS_R_x3_______, KC_RSFT, _L_FUNC
 
 #define _SYMBOLS_L \
     _________________SYMBOLS_L1________________, _________________SYMBOLS_R1________________, \
