@@ -4,6 +4,7 @@ EXTRAKEY_ENABLE = yes
 MOUSEKEY_ENABLE = yes
 BOOTMAGIC_ENABLE = no
 # if disabled, leads to xprintf errors in blackflat json compile
+# or VIAL blackbowl
 # but only if not using german keymap workaround?
 CONSOLE_ENABLE = no
 

@@ -25,9 +25,17 @@ enum layers {
     _MOUSE,
 };
 
-#    include "quantum_keycodes.h"
+// when #include "quantum_keycodes.h" is used, MAX and xprintf are redefined, apparently
 enum custom_keycodes {
-    REC_START = SAFE_RANGE, // same as default QK_USER in QMK, not available in VIAL
+    // Neither SAFE_RANGE or UNICODE_EMACS + 1 work here if quantum_keycodes.h isn't included,
+    // which in turn would cause MAX and xprintf re-definition errors without patching VIAL core!
+    // SAFE_RANGE, same as default QK_USER in QMK, not available in VIAL
+    REC_START =
+#    if defined(VIAL_ENABLE)
+        0x5F10,
+#    else
+        SAFE_RANGE,
+#    endif
     REC_STOP,
     REC_REPLAY,
     XOR_INIT,
