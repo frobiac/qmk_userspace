@@ -1,3 +1,6 @@
+# This file is *only* ever read on QMK JSON compile from userspace,
+# and VIAL compile, but not QMK '-kb' ...
+
 # Common features
 # COMBO_ENABLE = yes
 EXTRAKEY_ENABLE = yes
@@ -7,6 +10,14 @@ BOOTMAGIC_ENABLE = no
 # or VIAL blackbowl
 # but only if not using german keymap workaround?
 CONSOLE_ENABLE = no
+GRAVE_ESC_ENABLE = no
+SPACE_CADET_ENABLE = no
+VERBOSE = yes
+
+ifeq ($(filter $(strip $(KEYMAP_JSON))x, x),)
+	# JSON compile
+	OPT_DEFS += -DJSON_COMPILE
+endif
 
 
 ifeq ($(strip $(MCU)), atmega32u4)

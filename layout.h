@@ -1,9 +1,13 @@
 // Copyright 2023 @frobiac
 // SPDX-License-Identifier: MIT
 
+// This file is *not at all* included when using QMK compile '-kb frobiac/blackbowl -km default' syntax!
 // @TODO : Figure out how to use with json compile, enum instead of define, ...
 
 #pragma once
+
+// Do *NOT* include, as MAX will be redefined
+// #include "quantum.h"
 
 // Note this kludge is required to be able to
 // compile *both* regular keymaps in the keyboards' directory
@@ -25,17 +29,16 @@ enum layers {
     _MOUSE,
 };
 
+#    if defined(VIAL_ENABLE) || defined(JSON_COMPILE)
+#        define MY_SAFE_RANGE 0x5F10
+#    endif
+
 // when #include "quantum_keycodes.h" is used, MAX and xprintf are redefined, apparently
 enum custom_keycodes {
     // Neither SAFE_RANGE or UNICODE_EMACS + 1 work here if quantum_keycodes.h isn't included,
-    // which in turn would cause MAX and xprintf re-definition errors without patching VIAL core!
+    // which in turn would cause MAX and xprintf re-definition errors without patching VIAL/QMK core!
     // SAFE_RANGE, same as default QK_USER in QMK, not available in VIAL
-    REC_START =
-#    if defined(VIAL_ENABLE)
-        0x5F10,
-#    else
-        SAFE_RANGE,
-#    endif
+    REC_START = MY_SAFE_RANGE,
     REC_STOP,
     REC_REPLAY,
     XOR_INIT,
