@@ -50,4 +50,9 @@ Similar to
 @TBD: with extra pinky column
 
 
+### Chocofi
+
+Initial compile:
+
+    qmk flash -kb crkbd/rev1 -km default -bl avrdude-split-left
 

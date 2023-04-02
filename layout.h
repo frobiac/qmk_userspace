@@ -12,12 +12,8 @@
 #ifndef __ASSEMBLER__
 // Using default german keymap include does *NOT* work because it includes "keymap.h".
 // Even with the above __ASSEMBLER__ guard, building '-kb frobiac/blackbowl -km frobiac' fails here with
+// #include "keymap_german.h"
 //
-// Compiling: platforms/avr/drivers/i2c_master.c
-// platforms/avr/drivers/i2c_master.c:40: error: "MAX" redefined [-Werror]
-// lib/lufa/LUFA/Drivers/USB/../../Common/Common.h:166: note: this is the location of the previous definition
-//
-// #    include "keymap_german.h"
 #    include "keymap_german_no_include.h"
 
 enum layers {
@@ -55,6 +51,7 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #define LAYOUT_blackflat_4x12_wrapper(...)  LAYOUT_blackflat_4x12(__VA_ARGS__)
 #define LAYOUT_sweep_3x5_2_wrapper(...)     LAYOUT_sweep_3x5_2(__VA_ARGS__)
 #define LAYOUT_crowboard_3x5_3_wrapper(...) LAYOUT_crowboard_3x5_3(__VA_ARGS__)
+#define LAYOUT_chocofi_3x5_3_wrapper(...)   LAYOUT_chocofi_3x5_3(__VA_ARGS__)
 
 
 
@@ -348,6 +345,24 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
         { L10, L11, L12, L13, L14,           R10, R11, R12, R13, R14 }, \
         { L20, L21, L22, L23, L24,           R20, R21, R22, R23, R24 }, \
         { xxx, xxx, L32, L33, L34, R30, R31, R32                     } \
+    }
+
+
+#define LAYOUT_chocofi_3x5_3(\
+    L00, L01, L02, L03, L04, R00, R01, R02, R03, R04, \
+    L10, L11, L12, L13, L14, R10, R11, R12, R13, R14, \
+    L20, L21, L22, L23, L24, R20, R21, R22, R23, R24, \
+    _3a, _3b, L32, L33, L34, R30, R31, R32, _3y, _3z \
+    ) \
+    { \
+        { xxx, L00, L01, L02, L03, L04 }, \
+        { xxx, L10, L11, L12, L13, L14 }, \
+        { xxx, L20, L21, L22, L23, L24 }, \
+        { xxx, xxx, xxx, L32, L33, L34 }, \
+        { xxx, R04, R03, R02, R01, R00 }, \
+        { xxx, R14, R13, R12, R11, R10 }, \
+        { xxx, R24, R23, R22, R21, R20 }, \
+        { xxx, xxx, xxx, R32, R31, R30 } \
     }
 
 // clang-format on
