@@ -85,7 +85,9 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 // @TODO: Use defines for any key-combination that is checked in process_record_.. routines to
 //        avoid issues on change.
 #define _MOUS_X LT(_MOUSE, KC_X)
-#define _MOUS_Y LT(_MOUSE, KC_Y)
+#define _MOUS_Y LT(_MOUSE, DE_Y)
+#define _FUNC_Z LT(_FUNC,  DE_Z)
+
 #define _NAVESC LT(_NAVNUM, KC_ESC)
 #define _SYMENT LT(_SYMBOLS, KC_ENT)
 
@@ -101,7 +103,7 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 
 #define _________________FROBIAC_R1________________         KC_P,    KC_C,    KC_L,    KC_M,    KC_F
 #define _________________FROBIAC_R2________________         KC_D,    KC_T,    KC_R,    KC_N,    KC_S
-#define _________________FROBIAC_R3________________         KC_B,    KC_G,    KC_W,    KC_V,    RSFT_T(DE_Z)
+#define _________________FROBIAC_R3________________         KC_B,    KC_G,    KC_W,    KC_V,    _FUNC_Z
 
 #define _________________QWERTZ__L1________________         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T
 #define _________________QWERTZ__L2________________         KC_A,    KC_S,    KC_D,    KC_F,    KC_G
