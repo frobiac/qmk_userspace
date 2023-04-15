@@ -36,6 +36,9 @@
 /// Reset to 0 to terminate further handling early.
 static uint16_t auto_l_timer = 0;
 
+// Store toggled mouse button replacement bit for latter reset
+static uint8_t mbtn3 = 0;
+
 // @TODO: Make configurable e.g. for Hypernano where trackpoint is separated, and dedicated extra keys could be used.
 // @TODO: Convert to matrix positions to be layout agnostic! E.g. col,row: L= 2,4, R=2,5 N=3,5
 /// Which keys to remap to mouse buttons 1..x
@@ -89,6 +92,8 @@ void ps2_mouse_moved_autombtn(report_mouse_t *mouse_report) {
         }
         auto_l_timer = timer_read();
     }
+    // inject held AMB keys for selecting an area
+    mouse_report->buttons |= mbtn3;
 }
 
 void matrix_scan_autombtn(void) {
@@ -97,9 +102,6 @@ void matrix_scan_autombtn(void) {
         auto_l_timer = 0;
     }
 }
-
-// Store toggled mouse button replacement bit for latter reset
-static uint8_t mbtn3 = 0;
 
 /// If auto-layer timer is running, map presses of 'from' to 'to'
 /// On release, check if any 'to's still need to be released in replacement of 'from' release
@@ -111,7 +113,9 @@ bool map_three_buttons(uint16_t from, uint16_t to, uint8_t bit, bool is_pressed)
         }
         auto_l_timer = timer_read();
         unregister_code(from);
-        register_code(to);
+        if ((mbtn3 & (1 << bit)) == 0) {
+            register_code(to);
+        }
         mbtn3 |= (1 << bit);
         return false;
     } else { // still a pressed remapped state not released available?
@@ -126,7 +130,7 @@ bool map_three_buttons(uint16_t from, uint16_t to, uint8_t bit, bool is_pressed)
 
 /// Check if mouse timer is active, and map configured keys to mouse buttons.
 bool process_record_automousebutton(uint16_t keycode, keyrecord_t *record) {
-    // xprintf("KL: kc: %04X, col: %02u, row: %02u, pressed: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed);
+    // xprintf("AMB: %u  kc: %04X, col: %02u, row: %02u, pressed: %u\n", mbtn3, keycode, record->event.key.col, record->event.key.row, record->event.pressed);
     for (size_t i = 0; i < sizeof(mbtn_remaps) / sizeof(mbtn_remaps[0]); ++i) {
         if (keycode == mbtn_remaps[i]) {
             if (!map_three_buttons(keycode, KC_BTN1 + i, i, record->event.pressed)) {

@@ -5,6 +5,9 @@
     #19600
     RGB_MATRIX_ENABLE = no
 
+## fixed
+[X] Trackpoint selection with AutoMouseButtons not working, only clicks.
+
 # General
 [ ] Check if VIAL can also be compiled via JSON instead of keyboard/frobiac/*/keymaps/vial
 [ ] Add install instructions from scratch rafaelromao/keyboards and gerryhernandez/gkey
