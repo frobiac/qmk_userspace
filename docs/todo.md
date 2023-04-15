@@ -29,6 +29,13 @@
 
 # Layout
 [ ] All layers reachable (Func-Layer?)
+    Upper pinkies not available on 3x5_3 boards!
+[ ] Alt-Arrow not possible with i3/sway Mod1
+[ ] Hyper/Meh for Sway?
+[ ] Macros: Reset for TP/MCU, Umlauts
+[ ] Mouse layer:
+    - not on left pinky. Maybe something tapping on left thumb?
+    - permanent activation? Macro?
 [X] Common locations for Reboot/Macro/DefaultLayer/CommandMode
 
 # To figure out
