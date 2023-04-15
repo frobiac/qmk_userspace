@@ -52,3 +52,18 @@ Working in AdNW v0.9.7-353-g1c31c1f-D-2021-01-17
     EE[15] 0005: 0C 0000 Mouse=1-1 AL=0
     TP: Sens:  28/128 SP= 97 TH=249
     PTS=0 X=1 Y=1 (18)
+
+## BlackBowl
+
+VIAL mousekeys config 230415 (QMK Settings -> MouseKeys):
+Slowest movement still (too) fast
+10 -> 15  delay
+20 between
+ 8 ->  6 step size
+10 max cursor speed / acc stop
+30 time to max cursor speed
+10 delay wheel key/move
+80 time between wheel movements
+ 8 Max scroll steps per activation
+40 time to max scroll speed
+
