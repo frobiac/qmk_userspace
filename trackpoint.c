@@ -12,7 +12,6 @@
 #    include "ps2.h"
 #    include "gpio.h"
 
-#    if defined(PS2_RESET_PIN)
 /**
  *  If the recommended reset circuitry is not attached to trackpoints reset line,
  *  it is possible do simulate it with a regular GPIO.
@@ -24,7 +23,10 @@
  *  See ZMK PR #1751 for 600ms low and then High again?!
  *  https://github.com/zmkfirmware/zmk/blob/98a7ed3633fcfbb28b2b119d7c8d2a50dc7e5b86/app/src/mouse/mouse_ps2.c
  */
-void tp_reset(void) {
+bool tp_reset(void) {
+    bool ret = false;
+
+#    if defined(PS2_RESET_PIN)
     setPinOutput(PS2_RESET_PIN);
     writePinHigh(PS2_RESET_PIN);
     wait_us(150); // PS2_DELAY
@@ -32,8 +34,11 @@ void tp_reset(void) {
     wait_ms(600); // wait for power up
     writePinHigh(PS2_RESET_PIN);
     // now ready to call ps2_host_init()
-}
+    ret = true;
 #    endif // PS2_RESET_PIN
+
+    return ret;
+}
 
 // @TODO: Remaining params of original firmware: drag, PTS
 // define TP_PTS_TOGGLE 0x2C // defconfig with bit 0 set
@@ -79,19 +84,15 @@ void ps2_mouse_init_trackpoint(void) {
 }
 
 void keyboard_pre_init_trackpoint(void) {
-#    if defined(PS2_RESET_PIN)
     tp_reset();
-#    endif
 }
 
 bool process_record_trackpoint(uint16_t keycode, keyrecord_t *record) {
-#    if defined(PS2_RESET_PIN)
     // @TODO Test if trackpoint reset fixes drift error
-    if (keycode == TP_RESET) {
+    if (keycode == TP_RESET && record->event.pressed) {
         tp_reset();
         return false;
     }
-#    endif
     return true;
 }
 
