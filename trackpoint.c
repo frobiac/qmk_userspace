@@ -7,12 +7,12 @@
 
 #ifdef PS2_MOUSE_ENABLE
 
+#    include "trackpoint.h"
 #    include "ps2_mouse.h"
 #    include "ps2.h"
 #    include "gpio.h"
 
 #    if defined(PS2_RESET_PIN)
-#        include "trackpoint.h"
 /**
  *  If the recommended reset circuitry is not attached to trackpoints reset line,
  *  it is possible do simulate it with a regular GPIO.
@@ -20,13 +20,17 @@
  *  To be called just before `ps2_host_init()`. The necessary 500ms delay is included.
  *
  *  Hook up in keyboard_init() just before ps2_mouse_init(), e.g. keyboard_pre_init_user()
+ *
+ *  See ZMK PR #1751 for 600ms low and then High again?!
+ *  https://github.com/zmkfirmware/zmk/blob/98a7ed3633fcfbb28b2b119d7c8d2a50dc7e5b86/app/src/mouse/mouse_ps2.c
  */
 void tp_reset(void) {
     setPinOutput(PS2_RESET_PIN);
     writePinHigh(PS2_RESET_PIN);
     wait_us(150); // PS2_DELAY
     writePinLow(PS2_RESET_PIN);
-    wait_ms(500); // wait for power up
+    wait_ms(600); // wait for power up
+    writePinHigh(PS2_RESET_PIN);
     // now ready to call ps2_host_init()
 }
 #    endif // PS2_RESET_PIN
