@@ -43,6 +43,7 @@ enum custom_keycodes {
     REC_REPLAY,
     XOR_INIT,
     XOR_PLAY,
+    TP_RESET,
 };
 
 #endif
@@ -134,7 +135,7 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 
 #define _________________FUNC_FX_L1________________         ____RECORDING_x3_________, DF(_QWERTZ), DF(_FROBIAC)
 #define _________________FUNC_FX_L2________________         ____DYNAMIC_MACRO_1_x3___, XXXXXXX, QK_REBOOT
-#define _________________FUNC_FX_L3________________         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOTLOADER
+#define _________________FUNC_FX_L3________________         TP_RESET, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOTLOADER
 
 #define _________________FUNC_FX_R1________________         XXXXXXX, KC_F7,   KC_F8,   KC_F9,   KC_F10
 #define _________________FUNC_FX_R2________________         XXXXXXX, KC_F4,   KC_F5,   KC_F6,   KC_F11

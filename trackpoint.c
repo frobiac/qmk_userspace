@@ -84,4 +84,15 @@ void keyboard_pre_init_trackpoint(void) {
 #    endif
 }
 
+bool process_record_trackpoint(uint16_t keycode, keyrecord_t *record) {
+#    if defined(PS2_RESET_PIN)
+    // @TODO Test if trackpoint reset fixes drift error
+    if (keycode == TP_RESET) {
+        tp_reset();
+        return false;
+    }
+#    endif
+    return true;
+}
+
 #endif // PS2_MOUSE_ENABLE
