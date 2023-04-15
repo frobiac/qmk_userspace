@@ -6,12 +6,26 @@
 EXTRAKEY_ENABLE = yes
 MOUSEKEY_ENABLE = yes
 BOOTMAGIC_ENABLE = no
+
 # if disabled, leads to xprintf errors in blackflat json compile
 # or VIAL blackbowl
 # but only if not using german keymap workaround?
-CONSOLE_ENABLE = no
-GRAVE_ESC_ENABLE = no
-SPACE_CADET_ENABLE = no
+CONSOLE_ENABLE = no        # 2300
+GRAVE_ESC_ENABLE = no      #  130
+SPACE_CADET_ENABLE = no    #  400
+KEY_OVERRIDE_ENABLE = no   # 1850
+
+# AUDIO_ENABLE = no
+# SEQUENCER_ENABLE = no
+# AUTO_SHIFT_ENABLE = no
+
+# TAP_DANCE_ENABLE = no      # 1650
+# QMK_SETTINGS = no          # 3500
+
+# try to fix suspend trackpoint bug
+# NO_USB_STARTUP_CHECK = yes
+RGB_MATRIX_ENABLE = no
+
 VERBOSE = yes
 
 ifeq ($(filter $(strip $(KEYMAP_JSON))x, x),)
