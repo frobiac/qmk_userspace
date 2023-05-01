@@ -16,7 +16,7 @@
  *  If the recommended reset circuitry is not attached to trackpoints reset line,
  *  it is possible do simulate it with a regular GPIO.
  *
- *  To be called just before `ps2_host_init()`. The necessary 500ms delay is included.
+ *  To be called just before `ps2_host_init()`. The necessary 500-600ms delay is included.
  *
  *  Hook up in keyboard_init() just before ps2_mouse_init(), e.g. keyboard_pre_init_user()
  *
