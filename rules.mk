@@ -40,7 +40,7 @@ endif
 
 SRC += frobiac.c \
 	   process_records.c \
-
+	
 # Trackpoint boards:
 # Default is to enable PS2_MOUSE_ENABLE here, but may be set to 'no' in keymaps' rules.mk to override
 # Support for older PS2 mode selection (as in VIAL) is also done here

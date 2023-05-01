@@ -39,10 +39,19 @@ static uint16_t auto_l_timer = 0;
 // Store toggled mouse button replacement bit for latter reset
 static uint8_t mbtn3 = 0;
 
-// @TODO: Make configurable e.g. for Hypernano where trackpoint is separated, and dedicated extra keys could be used.
-// @TODO: Convert to matrix positions to be layout agnostic! E.g. col,row: L= 2,4, R=2,5 N=3,5
 /// Which keys to remap to mouse buttons 1..x
-static uint16_t mbtn_remaps[] = {KC_R, KC_N, KC_L};
+/// Same row/col mapping for all trackpoint boards there: RNL on default layout (KLI on Qwertz?)
+static uint8_t mbtn_remaps_rc[] =
+#if defined(KEYBOARD_frobiac_blackbowl)
+    {0x22, 0x32, 0x23}
+#elif (defined(KEYBOARD_frobiac_blackflat) || defined(KEYBOARD_frobiac_redtilt))
+    {0x52, 0x53, 0x45}
+#elif defined(KEYBOARD_frobiac_hypernano)
+    {0x33, 0x34, 0x13}
+#else
+#    error undefined AMB for keyboard
+#endif
+;
 
 #ifndef CUSTOM_AUTO_MBTN_TIMEOUT_MS
 #    define CUSTOM_AUTO_MBTN_TIMEOUT_MS 2000
@@ -130,9 +139,10 @@ bool map_three_buttons(uint16_t from, uint16_t to, uint8_t bit, bool is_pressed)
 
 /// Check if mouse timer is active, and map configured keys to mouse buttons.
 bool process_record_automousebutton(uint16_t keycode, keyrecord_t *record) {
-    // xprintf("AMB: %u  kc: %04X, col: %02u, row: %02u, pressed: %u\n", mbtn3, keycode, record->event.key.col, record->event.key.row, record->event.pressed);
-    for (size_t i = 0; i < sizeof(mbtn_remaps) / sizeof(mbtn_remaps[0]); ++i) {
-        if (keycode == mbtn_remaps[i]) {
+    uint8_t code = (record->event.key.row << 4 | record->event.key.col);
+    // xprintf("AMB: code=%02X  kc: %04X, col: %02u, row: %02u, pressed: %u\n", code, keycode, record->event.key.col, record->event.key.row, record->event.pressed);
+    for (size_t i = 0; i < sizeof(mbtn_remaps_rc) / sizeof(mbtn_remaps_rc[0]); ++i) {
+        if (mbtn_remaps_rc[i] == code) {
             if (!map_three_buttons(keycode, KC_BTN1 + i, i, record->event.pressed)) {
                 return false;
             }
