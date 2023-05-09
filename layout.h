@@ -87,7 +87,8 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 //        avoid issues on change.
 #define _MOUS_X LT(_MOUSE, KC_X)
 #define _MOUS_Y LT(_MOUSE, DE_Y)
-#define _FUNC_Z LT(_FUNC,  DE_Z)
+#define _FUNC_F LT(_FUNC,  KC_F)
+#define _FUNC_P LT(_FUNC,  KC_P)
 
 #define _NAVESC LT(_NAVNUM, KC_ESC)
 #define _SYMENT LT(_SYMBOLS, KC_ENT)
@@ -102,15 +103,15 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #define _________________FROBIAC_L2________________         KC_H,    KC_I,    KC_E,    KC_A,    KC_O
 #define _________________FROBIAC_L3________________         _MOUS_X, DE_Y,    DE_MINS, KC_COMM, DE_SLSH
 
-#define _________________FROBIAC_R1________________         KC_P,    KC_C,    KC_L,    KC_M,    KC_F
+#define _________________FROBIAC_R1________________         KC_P,    KC_C,    KC_L,    KC_M,    _FUNC_F
 #define _________________FROBIAC_R2________________         KC_D,    KC_T,    KC_R,    KC_N,    KC_S
-#define _________________FROBIAC_R3________________         KC_B,    KC_G,    KC_W,    KC_V,    _FUNC_Z
+#define _________________FROBIAC_R3________________         KC_B,    KC_G,    KC_W,    KC_V,    DE_Z
 
 #define _________________QWERTZ__L1________________         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T
 #define _________________QWERTZ__L2________________         KC_A,    KC_S,    KC_D,    KC_F,    KC_G
 #define _________________QWERTZ__L3________________         _MOUS_Y, KC_X,    KC_C,    KC_V,    KC_B
 
-#define _________________QWERTZ__R1________________         DE_Z,    KC_U,    KC_I,    KC_O,    KC_P
+#define _________________QWERTZ__R1________________         DE_Z,    KC_U,    KC_I,    KC_O,    _FUNC_P
 #define _________________QWERTZ__R2________________         KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN
 #define _________________QWERTZ__R3________________         KC_N,    KC_M,    KC_COMM, KC_DOT,  RSFT_T(KC_SLASH)
 
@@ -137,9 +138,9 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #define _________________FUNC_FX_L2________________         ____DYNAMIC_MACRO_1_x3___, XXXXXXX, QK_REBOOT
 #define _________________FUNC_FX_L3________________         TP_RESET, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOTLOADER
 
-#define _________________FUNC_FX_R1________________         XXXXXXX, KC_F7,   KC_F8,   KC_F9,   KC_F10
-#define _________________FUNC_FX_R2________________         XXXXXXX, KC_F4,   KC_F5,   KC_F6,   KC_F11
-#define _________________FUNC_FX_R3________________         XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F12
+#define _________________FUNC_FX_R1________________         KC_F12 , KC_F7,   KC_F8,   KC_F9,   XXXXXXX /* MO(_FUNC) */
+#define _________________FUNC_FX_R2________________         KC_F11 , KC_F4,   KC_F5,   KC_F6,   XXXXXXX
+#define _________________FUNC_FX_R3________________         KC_F10 , KC_F1,   KC_F2,   KC_F3,   XXXXXXX
 
 
 #define _________________MOUSE___L1________________         KC_WH_L, KC_BTN1, KC_MS_U, KC_BTN3, KC_BTN2
