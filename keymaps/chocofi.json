@@ -5,8 +5,8 @@
     "keymap": "frobiac",
     "layout": "LAYOUT_chocofi_3x5_3_wrapper",
     "layers": [
-        [ "_FROBIAC_L" ],
         [ "_QWERTZ_L"  ],
+        [ "_FROBIAC_L" ],
         [ "_SYMBOLS_L" ],
         [ "_NAVNUM_L"  ],
         [ "_FUNC_L"    ],
